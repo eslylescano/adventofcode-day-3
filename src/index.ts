@@ -79,13 +79,13 @@ function hasAdjacentSymbol(array: string[][], rowIndex: number, colIndex: number
         if (neighborRow >= 0 && neighborRow < numRows && neighborCol >= 0 && neighborCol < numCols) {
             const neighbor = array[neighborRow][neighborCol];
 
-            if (neighbor === '*' || neighbor === '#' || neighbor === '+' || neighbor === '$') {
+            if (neighbor !== '.' && isNaN(parseInt(neighbor))) {
                 return true;
             }
         }
     }
 
-    return false; 
+    return false;
 }
 
 

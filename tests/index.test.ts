@@ -1,5 +1,8 @@
 import { sumAdjacentNumbers } from "../src";
-
+import * as fs from 'fs';
+import * as path from 'path';
+const currentDir = path.dirname(__filename);
+const filePath = path.join(currentDir, 'input.txt');
 
 describe('sumAdjacentNumbers', () => {
     test('example engine schematic', () => {
@@ -39,3 +42,18 @@ describe('sumAdjacentNumbers', () => {
     });
 
 });
+
+describe('Calculate sum of all of the part numbers', () => {
+    it('handles the input file', () => {
+        fs.readFile(filePath, 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error reading the file:', err);
+                return;
+            }
+            const lines = data.split('\n');
+            const sum = sumAdjacentNumbers(lines);
+            expect(sum).toBeDefined();
+            console.log(sum);
+        });
+      });
+  })
